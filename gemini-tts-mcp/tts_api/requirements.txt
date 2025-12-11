@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+google-cloud-texttospeech>=2.29.0

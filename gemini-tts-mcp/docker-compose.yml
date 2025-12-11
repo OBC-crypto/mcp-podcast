@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+
+  tts_api:
+    container_name: tts_api
+    build: ./tts_api
+    restart: always
+    networks:
+      - tts_net
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/keys/service-account.json
+      - GOOGLE_CLOUD_PROJECT=jangihbot
+    volumes:
+      - ./tts_api/keys:/app/keys
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: always
+    networks:
+      - tts_net
+    command: >
+      tunnel --no-autoupdate run --token eyJhIjoiYjY0ZGIyODBlM2MzYTVjNTIzMDA0M2IwNzk0MDI3NjciLCJ0IjoiNjdmZTlkNDMtNThkMy00NzUwLWEwMjItOTkyNWY2ZWE0MTJlIiwicyI6Ik5tTmtOVGd6TTJNdE4yRXlNUzAwTmpCbExXSmhOelF0WmpRME1tWTFNRGhqWkRFMyJ9
+
+networks:
+  tts_net:
+    driver: bridge
