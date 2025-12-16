@@ -21,8 +21,7 @@ services:
     networks:
       - tts_net
     command: >
-      tunnel --no-autoupdate run --token eyJhIjoiYjY0ZGIyODBlM2MzYTVjNTIzMDA0M2IwNzk0MDI3NjciLCJ0IjoiNjdmZTlkNDMtNThkMy00NzUwLWEwMjItOTkyNWY2ZWE0MTJlIiwicyI6Ik5tTmtOVGd6TTJNdE4yRXlNUzAwTmpCbExXSmhOelF0WmpRME1tWTFNRGhqWkRFMyJ9
-
+      tunnel --no-autoupdate run --token 
 networks:
   tts_net:
     driver: bridge
